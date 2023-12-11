@@ -50,7 +50,13 @@ orderByYear()
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
 
-}
+  let filterGenre = movies.filter(movie => movie.genre == 'Drama');
+  let result = filterGenre.reduce((total, filter) => total + filter.score, 0);
+  console.log("EXERCISE 6 ->", "Media de las notas de las peliculas de Genero 'Drama':", result.toFixed(2) / 19);
+  console.log("COMPROBACION ->", "Array de peliculas de genero 'Drama':", filterGenre);
+};
+moviesAverageByCategory()
+
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
