@@ -40,7 +40,12 @@ orderAlphabetically();
 // Exercise 5: Order by year, ascending
 function orderByYear() {
 
-}
+  let orderAlphabeticMovies = movies.sort((a,b) => a.title < b.title ? -1 : 1);
+  let result = orderAlphabeticMovies.sort((a,b) => a.year < b.year ? -1 : 1);
+  console.log("EXERCISE 5 ->", "Array de peliculas ordenadas por año:", result);
+};
+orderByYear() 
+
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
