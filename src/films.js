@@ -1,6 +1,6 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
-  
+
   let result = movies.map(directors => directors.director);
   console.log("EXERCISE 1 ->", "Array de directores:", result);
   return result;
@@ -10,8 +10,12 @@ getAllDirectors();
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
- 
-}
+
+  let result = movies.filter(movie => movie.director === 'Quentin Tarantino');
+  console.log( "EXERCISE 2 ->", "Array de peliculas de Quentin Tarantino:", result);
+  }; 
+  getMoviesFromDirector()
+
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
