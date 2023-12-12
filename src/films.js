@@ -65,8 +65,14 @@ function hoursToMinutes() {
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
-  
+
+  let filterYear = movies.filter(movie => movie.year == '1976');
+  let result = filterYear.reduce((best, movie) => (movie.score > best.score ? movie : best));
+  console.log("EXERCISE 8 ->", "La mejor pelicula del año seleccionado '1976' es:", result);
+  console.log("COMPROBACION ->", "Array de peliculas de año seleccionado '1976':", filterYear);
 }
+bestFilmOfYear();
+
 
 
 
