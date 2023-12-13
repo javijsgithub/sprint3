@@ -1,77 +1,76 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
 
-  let result = movies.map(directors => directors.director);
-  console.log("EXERCISE 1 ->", "Array de directores:", result);
+  let result = array.map(movie => movie.director);
   return result;
-};
-getAllDirectors();
-
+}
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
 
-  let result = movies.filter(movie => movie.director === 'Quentin Tarantino');
-  console.log( "EXERCISE 2 ->", "Array de peliculas de Quentin Tarantino:", result);
-  }; 
-  getMoviesFromDirector()
-
+let result = array.filter(movie=> movie.director === director);
+return result;
+} 
+  
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
 
-  let filterDirector = movies.filter(movie => movie.director === 'Quentin Tarantino');
-  let result = filterDirector.reduce((total, filter) => total + filter.score, 0);
-  console.log("EXERCISE 3 ->", "Media de las notas de las 5 peliculas:", result.toFixed(2) / 5);// no entiendo porque no salen los dos decimales en el resultado <8.4>
-};
-moviesAverageOfDirector();
+  const filterDirector = array.filter(movie => movie.director === director);
+  if (filterDirector.length === 0) {
+    return 0;
+  }
+    
+  const totalScore = filterDirector.reduce((sum, movie) => sum + movie.score, 0);
+  return parseFloat((totalScore / filterDirector.length).toFixed(2));
+}
   
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
 
-  let filter20primeras = movies.filter((movie, index) => index < 20);
-  let result = filter20primeras.sort((a,b) => a.title < b.title ? -1 : 1);
-  console.log("EXERCISE 4 ->", "Array de 20 peliculas ordenadas por orden alfabetico:", result);
-};
-orderAlphabetically();
-
+  array.filter((index) => index < 20);
+  return array.map(movie => movie.title).sort();
+}
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(array) {
 
-  let orderAlphabeticMovies = movies.sort((a,b) => a.title < b.title ? -1 : 1);
-  let result = orderAlphabeticMovies.sort((a,b) => a.year < b.year ? -1 : 1);
-  console.log("EXERCISE 5 ->", "Array de peliculas ordenadas por año:", result);
+  let orderAlphabeticMovies = array.sort((a,b) => a.title < b.title ? -1 : 1);
+  let orederYear = orderAlphabeticMovies.sort((a,b) => a.year < b.year ? -1 : 1);
+  return (orderAlphabeticMovies, orederYear);
 };
-orderByYear() 
+
 
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array) {
 
-  let filterGenre = movies.filter(movie => movie.genre == 'Drama');
+  let filterGenre = array.filter(movie => movie.genre === genre);
   let result = filterGenre.reduce((total, filter) => total + filter.score, 0);
-  console.log("EXERCISE 6 ->", "Media de las notas de las peliculas de Genero 'Drama':", result.toFixed(2) / 19);
-  console.log("COMPROBACION ->", "Array de peliculas de genero 'Drama':", filterGenre);
+  return result;
 };
-moviesAverageByCategory()
+
 
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
-}
+function hoursToMinutes(array) {
+  let filterDuration = array.filter(movie => movie.duration);
+  let result = filterDuration.reduce((hours, minutes) =>  hours * 60 + minutes);
+  return result;
+};
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
+function bestFilmOfYear(array) {
 
-  let filterYear = movies.filter(movie => movie.year == '1976');
-  let result = filterYear.reduce((best, movie) => (movie.score > best.score ? movie : best));
-  console.log("EXERCISE 8 ->", "La mejor pelicula del año seleccionado '1976' es:", result);
-  console.log("COMPROBACION ->", "Array de peliculas de año seleccionado '1976':", filterYear);
-}
-bestFilmOfYear();
+  const filmsOfYear = array.filter(movie => movie.year);
+  if (filmsOfYear.length === 0) {
+    return ; 
+  }
+  const bestFilm = filmsOfYear.reduce((best, movie) => (movie.score > best.score ? movie : best), filmsOfYear[0]);
+  return [bestFilm];
+};
+
 
 
 
