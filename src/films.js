@@ -1,7 +1,7 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
 
-  let result = array.map(movie => movie.director);
+  let result = array.map(directores => directores.director);
   return result;
 }
 
@@ -29,15 +29,16 @@ function moviesAverageOfDirector(array, director) {
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
 
-  array.filter((index) => index < 20);
-  return array.map(movie => movie.title).sort();
+  const filtrarVeinte = array.filter(index => index < 20);
+  const result = array.map(movie => movie.title).sort();
+  return (filtrarVeinte, result)
 }
 
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
 
-  let orderAlphabeticMovies = array.sort((a,b) => a.title < b.title ? -1 : 1);
-  let orederYear = orderAlphabeticMovies.sort((a,b) => a.year < b.year ? -1 : 1);
+  const orderAlphabeticMovies = array.sort((a,b) => a.title < b.title ? -1 : 1);
+  const orederYear = array.sort((a,b) => a.year < b.year ? -1 : 1);
   return (orderAlphabeticMovies, orederYear);
 };
 
@@ -46,8 +47,8 @@ function orderByYear(array) {
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array) {
 
-  let filterGenre = array.filter(movie => movie.genre === genre);
-  let result = filterGenre.reduce((total, filter) => total + filter.score, 0);
+  const filterGenre = array.filter(movie => movie.genre === genre);
+  const result = filterGenre.reduce((total, filter) => total + filter.score, 0);
   return result;
 };
 
@@ -55,8 +56,9 @@ function moviesAverageByCategory(array) {
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
-  let filterDuration = array.filter(movie => movie.duration);
-  let result = filterDuration.reduce((hours, minutes) =>  hours * 60 + minutes);
+
+  const filterDuration = array.filter(movie => movie.duration);
+  const result = filterDuration.reduce((hours, minutes) =>  hours * 60 + minutes);
   return result;
 };
 
@@ -65,7 +67,7 @@ function bestFilmOfYear(array) {
 
   const filmsOfYear = array.filter(movie => movie.year);
   if (filmsOfYear.length === 0) {
-    return ; 
+    return 0; 
   }
   const bestFilm = filmsOfYear.reduce((best, movie) => (movie.score > best.score ? movie : best), filmsOfYear[0]);
   return [bestFilm];
