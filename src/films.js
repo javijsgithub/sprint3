@@ -31,7 +31,7 @@ function orderAlphabetically(array) {
   
   const filtrarTitulo = array.map(movie => movie.title).sort();
   const filtrarVeinte = filtrarTitulo.filter(index => index < 20);
-  return (filtrarTitulo, filtrarVeinte);
+  return (filtrarVeinte, filtrarTitulo);
 }
 
 // Exercise 5: Order by year, ascending
